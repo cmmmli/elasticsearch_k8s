@@ -13,7 +13,7 @@ spec:
     # - search.example.jp
     secretName: elasticsearch-sample-tls
   rules:
-  - host: search.example.jp
+  # - host: search.example.jp
     http:
       paths:
       - path: /*
