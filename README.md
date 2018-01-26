@@ -3,6 +3,7 @@
 ## prerequirement
 1. [Google cloud SDK](https://cloud.google.com/sdk/docs/quickstarts?hl=ja)
 1. [kubectl](https://kubernetes.io/docs/user-guide/kubectl/)
+1. docker with kubernetes
 ```
 $ gcloud components install kubectl
 ```

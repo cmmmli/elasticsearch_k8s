@@ -26,7 +26,7 @@ spec:
               mountPath: /etc/nginx/conf.d
             - name: site-top-html
               mountPath: /usr/share/nginx/html
-        - image: gcr.io/${GCP-PROJECT}/elasticsearch:${TAG}
+        - image: cmmmli/elasticsearch:latest
           imagePullPolicy: Always
           name: elasticsearch-client
           env:

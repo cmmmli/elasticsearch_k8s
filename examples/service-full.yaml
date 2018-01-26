@@ -8,7 +8,7 @@ metadata:
   annotations:
     service.beta.kubernetes.io/external-traffic: OnlyLocal
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: elasticsearch-sample
   ports:

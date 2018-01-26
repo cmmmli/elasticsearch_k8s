@@ -34,7 +34,7 @@ spec:
         securityContext:
           privileged: true
       containers:
-        - image: gcr.io/${GCP-PROJECT}/elasticsearch:${TAG}
+        - image: cmmmli/elasticsearch:latest
           name: elasticsearch-data
           env:
           - name: NAMESPACE

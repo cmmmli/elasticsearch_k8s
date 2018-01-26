@@ -26,7 +26,7 @@ data:
     		}
     }
   .htpasswd: |
-    
+    elastic:$apr1$j9XW7Exl$UXT8KyvzAQNLuykml09HY/
 ---
 apiVersion: v1
 kind: ConfigMap
