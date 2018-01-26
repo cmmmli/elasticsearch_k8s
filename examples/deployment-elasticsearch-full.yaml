@@ -51,7 +51,7 @@ spec:
               fieldRef:
                 fieldPath: metadata.name
           - name: "NUMBER_OF_MASTERS"
-            value: "2"
+            value: "1"
           - name: NODE_MASTER
             value: "true"
           - name: NODE_DATA
