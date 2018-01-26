@@ -1,12 +1,10 @@
 # elasticsearch-k8s
 
 ## prerequirement
-1. [Google cloud SDK](https://cloud.google.com/sdk/docs/quickstarts?hl=ja)
-1. docker with kubernetes
-  1. [kubectl](https://kubernetes.io/docs/user-guide/kubectl/)
-```
-$ gcloud components install kubectl
-```
+1. Docker for Mac
+1. [kubectl](https://kubernetes.io/docs/user-guide/kubectl/)
+
+Docker for Macはkubernetesを利用する場合はEdgeを利用します。
 
 ## use on docker for mac with kubernetes
 
