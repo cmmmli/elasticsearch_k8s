@@ -1,17 +1,17 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: elasticsearch-sample
+  name: elasticsearch
   namespace: elasticsearch
   labels:
-    app: elasticsearch-sample
+    app: elasticsearch
     role: client
   annotations:
     service.beta.kubernetes.io/external-traffic: OnlyLocal
 spec:
   type: NodePort
   selector:
-    app: elasticsearch-sample
+    app: elasticsearch
     role: client
   ports:
   - protocol: TCP
@@ -28,7 +28,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: elasticsearch-sample
+    app: elasticsearch
     role: master
   ports:
   - name: transport
@@ -41,11 +41,11 @@ metadata:
   name: elasticsearch
   namespace: elasticsearch
   labels:
-    app: elasticsearch-sample
+    app: elasticsearch
     role: client
 spec:
   selector:
-    app: elasticsearch-sample
+    app: elasticsearch
     role: client
   ports:
   - name: http

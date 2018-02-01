@@ -6,17 +6,17 @@ metadata:
   annotations:
     kubernetes.io/tls-acme: "true"
     kubernetes.io/ingress.class: "gce"
-    kubernetes.io/ingress.global-static-ip-name: elasticsearch-sample
+    kubernetes.io/ingress.global-static-ip-name: elasticsearch
 spec:
   tls:
   - hosts:
     # - search.example.jp
-    secretName: elasticsearch-sample-tls
+    secretName: elasticsearch-tls
   rules:
   # - host: search.example.jp
     http:
       paths:
       - path: /*
         backend:
-          serviceName: elasticsearch-sample
+          serviceName: elasticsearch
           servicePort: 80

@@ -4,7 +4,7 @@ metadata:
   name: elasticsearch-full-sample
   namespace: elasticsearch
   labels:
-    app: elasticsearch-sample
+    app: elasticsearch
 spec:
   replicas: 1
   serviceName: elasticsearch-discovery
@@ -15,7 +15,7 @@ spec:
   template:
     metadata:
       labels:
-        app: elasticsearch-sample
+        app: elasticsearch
     spec:
       affinity:
         podAntiAffinity:
@@ -27,7 +27,7 @@ spec:
                 - key: app
                   operator: In
                   values:
-                  - elasticsearch-sample
+                  - elasticsearch
               topologyKey: kubernetes.io/hostname
       initContainers:
       - name: init-sysctl

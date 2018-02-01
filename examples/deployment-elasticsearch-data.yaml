@@ -11,7 +11,7 @@ spec:
   template:
     metadata:
       labels:
-        app: elasticsearch-sample
+        app: elasticsearch
         role: data
     spec:
       affinity:

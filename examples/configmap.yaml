@@ -38,7 +38,7 @@ data:
     <!DOCTYPE html>
     <html>
     <head>
-    <title>elasticsearch-sample</title>
+    <title>elasticsearch</title>
     <style>
         body {
             width: 35em;

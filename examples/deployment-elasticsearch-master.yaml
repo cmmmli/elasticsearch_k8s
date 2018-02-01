@@ -1,17 +1,17 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: elasticsearch-sample-master
+  name: elasticsearch-master
   namespace: elasticsearch
   labels:
-    app: elasticsearch-sample
+    app: elasticsearch
     role: master
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: elasticsearch-sample
+        app: elasticsearch
         role: master
     spec:
       initContainers:

@@ -1,14 +1,14 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: elasticsearch-sample-nginx
+  name: elasticsearch-nginx
   namespace: elasticsearch
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: elasticsearch-sample
+        app: elasticsearch
         role: client
     spec:
       initContainers:
