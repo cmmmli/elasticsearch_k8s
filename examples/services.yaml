@@ -34,20 +34,20 @@ spec:
   - name: transport
     port: 9300
     protocol: TCP
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: elasticsearch
-  namespace: elasticsearch
-  labels:
-    app: elasticsearch
-    role: client
-spec:
-  selector:
-    app: elasticsearch
-    role: client
-  ports:
-  - name: http
-    port: 9200
-    protocol: TCP
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: elasticsearch
+#   namespace: elasticsearch
+#   labels:
+#     app: elasticsearch
+#     role: client
+# spec:
+#   selector:
+#     app: elasticsearch
+#     role: client
+#   ports:
+#   - name: http
+#     port: 9200
+#     protocol: TCP
