@@ -12,18 +12,6 @@ spec:
       labels:
         app: elasticsearch
     spec:
-      affinity:
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                - key: app
-                  operator: In
-                  values:
-                  - elasticsearch
-              topologyKey: kubernetes.io/hostname
       initContainers:
       - name: init-sysctl
         image: busybox
@@ -39,7 +27,7 @@ spec:
               mountPath: /etc/nginx/conf.d
             - name: site-top-html
               mountPath: /usr/share/nginx/html
-        - image: cmmmli/elasticsearch:latest
+        - image: elasticsearch:local
           name: elasticsearch-full
           env:
           - name: NAMESPACE

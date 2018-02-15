@@ -1,29 +1,16 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: elasticsearch-full-sample
+  name: elasticsearch-nginx
   namespace: elasticsearch
-  labels:
-    app: elasticsearch
 spec:
   replicas: 1
   template:
     metadata:
       labels:
         app: elasticsearch
+        role: client
     spec:
-      affinity:
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                - key: app
-                  operator: In
-                  values:
-                  - elasticsearch
-              topologyKey: kubernetes.io/hostname
       initContainers:
       - name: init-sysctl
         image: busybox
@@ -39,8 +26,8 @@ spec:
               mountPath: /etc/nginx/conf.d
             - name: site-top-html
               mountPath: /usr/share/nginx/html
-        - image: cmmmli/elasticsearch:latest
-          name: elasticsearch-full
+        - image: elasticsearch:local
+          name: elasticsearch-client
           env:
           - name: NAMESPACE
             valueFrom:
@@ -50,14 +37,12 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.name
-          - name: "NUMBER_OF_MASTERS"
-            value: "1"
           - name: NODE_MASTER
-            value: "true"
+            value: "false"
           - name: NODE_DATA
-            value: "true"
+            value: "false"
           - name: "ES_JAVA_OPTS"
-            value: "-Xms1024m -Xmx1024m"
+            value: "-Xms256m -Xmx256m"
           ports:
           - containerPort: 9200
             name: http

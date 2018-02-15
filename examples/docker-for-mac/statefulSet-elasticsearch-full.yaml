@@ -1,5 +1,5 @@
-apiVersion: extensions/v1beta1
-kind: Deployment
+apiVersion: apps/v1beta1
+kind: StatefulSet
 metadata:
   name: elasticsearch-full-sample
   namespace: elasticsearch
@@ -7,23 +7,16 @@ metadata:
     app: elasticsearch
 spec:
   replicas: 1
+  serviceName: elasticsearch-discovery
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+  podManagementPolicy: Parallel
   template:
     metadata:
       labels:
         app: elasticsearch
     spec:
-      affinity:
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                - key: app
-                  operator: In
-                  values:
-                  - elasticsearch
-              topologyKey: kubernetes.io/hostname
       initContainers:
       - name: init-sysctl
         image: busybox
@@ -39,7 +32,7 @@ spec:
               mountPath: /etc/nginx/conf.d
             - name: site-top-html
               mountPath: /usr/share/nginx/html
-        - image: cmmmli/elasticsearch:latest
+        - image: elasticsearch:local
           name: elasticsearch-full
           env:
           - name: NAMESPACE
@@ -75,6 +68,13 @@ spec:
         - name: site-top-html
           configMap:
             name: site-top-html
-        - name: "storage"
-          emptyDir:
-            medium: ""
+  volumeClaimTemplates:
+  - metadata:
+      name: storage
+      annotations:
+        volume.beta.kubernetes.io/storage-class: hostpath
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 5Gi
