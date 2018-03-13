@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: elasticsearch-dictionary
+  namespace: elasticsearch
+data:
+  user_dict.csv: |
+    丼ぶり,丼ぶり,ドンブリ,名詞
+  synonym_dict.txt: |
+    丼 , 丼ぶり

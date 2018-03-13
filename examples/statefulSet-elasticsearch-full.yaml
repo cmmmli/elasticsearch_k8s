@@ -73,6 +73,8 @@ spec:
           volumeMounts:
           - name: storage
             mountPath: /usr/share/elasticsearch/data
+          - name: elasticsearch-dictionary
+            mountPath: /usr/share/elasticsearch/config/dictionary
       volumes:
         - name: site-conf
           configMap:
@@ -80,6 +82,9 @@ spec:
         - name: site-top-html
           configMap:
             name: site-top-html
+        - name: elasticsearch-dictionary
+          configMap:
+            name: elasticsearch-dictionary
   volumeClaimTemplates:
   - metadata:
       name: storage

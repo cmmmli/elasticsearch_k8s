@@ -32,7 +32,7 @@ spec:
               mountPath: /etc/nginx/conf.d
             - name: site-top-html
               mountPath: /usr/share/nginx/html
-        - image: elasticsearch:local
+        - image: elasticsearch:5.6.8.simple
           name: elasticsearch-full
           env:
           - name: NAMESPACE
@@ -61,6 +61,8 @@ spec:
           volumeMounts:
           - name: storage
             mountPath: /usr/share/elasticsearch/data
+          - name: elasticsearch-dictionary
+            mountPath: /usr/share/elasticsearch/config/dictionary
       volumes:
         - name: site-conf
           configMap:
@@ -68,6 +70,9 @@ spec:
         - name: site-top-html
           configMap:
             name: site-top-html
+        - name: elasticsearch-dictionary
+          configMap:
+            name: elasticsearch-dictionary
   volumeClaimTemplates:
   - metadata:
       name: storage
