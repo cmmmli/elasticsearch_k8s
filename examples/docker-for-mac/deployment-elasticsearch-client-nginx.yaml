@@ -26,6 +26,8 @@ spec:
               mountPath: /etc/nginx/conf.d
             - name: site-top-html
               mountPath: /usr/share/nginx/html
+            - name: htpasswd
+              mountPath: /etc/nginx/htpasswd
         - image: elasticsearch:local
           name: elasticsearch-client
           env:
@@ -63,3 +65,6 @@ spec:
         - name: "storage"
           emptyDir:
             medium: ""
+        - name: htpasswd
+          secret:
+            secretName: htpasswd

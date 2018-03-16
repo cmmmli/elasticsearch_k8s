@@ -44,6 +44,8 @@ spec:
               mountPath: /etc/nginx/conf.d
             - name: site-top-html
               mountPath: /usr/share/nginx/html
+            - name: htpasswd
+              mountPath: /etc/nginx/htpasswd
         - image: cmmmli/elasticsearch:latest
           name: elasticsearch-full
           env:
@@ -85,6 +87,9 @@ spec:
         - name: elasticsearch-dictionary
           configMap:
             name: elasticsearch-dictionary
+        - name: htpasswd
+          secret:
+            secretName: htpasswd
   volumeClaimTemplates:
   - metadata:
       name: storage

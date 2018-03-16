@@ -13,6 +13,7 @@ Docker for Macはkubernetesを利用する場合はEdgeを利用します。
 $ kubectl config use-context docker-for-desktop
 $ cd example
 $ kubectl apply -f 00namespace.yaml -f configmap.yaml -f deployment-elasticsearch-full.yaml -f service-full.yaml
+$ kubectl create secret generic htpasswd -n elasticsearch --from-file=.htpasswd
 ```
 
 ### access elasticsearch
@@ -26,4 +27,3 @@ $ kubectl get **(e.g. deploy, po, rs, svc...) --namespace elasticsearch
 $ kubectl describe ** --namespace elasticsearch
 ```
 See [kubectl Reference Documentation](https://kubernetes.io/docs/user-guide/kubectl/) for more information
-

@@ -26,6 +26,8 @@ spec:
               mountPath: /etc/nginx/conf.d
             - name: site-top-html
               mountPath: /usr/share/nginx/html
+            - name: htpasswd
+              mountPath: /etc/nginx/htpasswd
         - image: cmmmli/elasticsearch:latest
           imagePullPolicy: Always
           name: elasticsearch-client
@@ -64,3 +66,6 @@ spec:
         - name: "storage"
           emptyDir:
             medium: ""
+        - name: htpasswd
+          secret:
+            secretName: htpasswd
